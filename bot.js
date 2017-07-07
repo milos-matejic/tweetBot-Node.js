@@ -16,7 +16,7 @@ var params = {
 function gotData(err, data, response) {
 	var tweets = data.statuses;
 	for (var i = 0; i < tweets.length; i++) {
-		console.log(tweets[i].text);
+		console.log(i+ 1 + '. ' + tweets[i].text);
 	}
 };
 
@@ -63,10 +63,10 @@ stream.on('follow', followed);
 function followed(eventMsg) { //need eventMsg from api doc to get the name of the person 
 	var name = eventMsg.source.name;
 	var screenName = eventMsg.source.screen_name;
-	//id_str is your twitter account id THIS IS TO FIX THE "WHEN I FOLLOW I GET A TWEET BUG"
-	//if (eventMsg.source.id_str !== 'your_twitter_account_id_here') {
-    //    tweetIt('.@' + screen_name + ' thanks for following')
-    //}    
-	tweetIt('@' + screenName + ' Thanks for following!');
+	if (screenName !== 'dev_meelosh') {
+        tweetIt('.@' + screenName + ' thanks for following!')
+    }else{
+    	console.log("Something went wrong! Oops!");
+    }
 	console.log("Followed event triggered!");
 }
