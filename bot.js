@@ -6,21 +6,21 @@ var config = require('./config');
 
 var T = new Twit(config);
 
-//getting, searching for a tweets, parsing the T.get process into a params var and a function; this is all using TWIT npm that connects with their API easily.
+//getting, searching for a tweets, parsing the T.get process into a params var and a function;
 
-// var params = {
-// 	q: 'rainbow',
-// 	count: 5
-// };
+var params = {
+	q: 'rainbow',
+	count: 5
+};
 
-// function gotData(err, data, response) {
-// 	var tweets = data.statuses;
-// 	for (var i = 0; i < tweets.length; i++) {
-// 		console.log(i + 1 + '. ' + tweets[i].text);
-// 	}
-// };
+function gotData(err, data, response) {
+	var tweets = data.statuses;
+	for (var i = 0; i < tweets.length; i++) {
+		console.log(i+ 1 + '. ' + tweets[i].text);
+	}
+};
 
-// T.get('search/tweets', params, gotData);
+T.get('search/tweets', params, gotData);
 
 
 //POSTing a tweet, need to call it via tweetIt() to work, but interval is set below so it will work through that.
@@ -64,9 +64,9 @@ function followed(eventMsg) { //need eventMsg from api doc to get the name of th
 	var name = eventMsg.source.name;
 	var screenName = eventMsg.source.screen_name;
 	if (screenName !== 'dev_meelosh') {
-		tweetIt('@' + screenName + ' thanks for following!')
-	} else {
-		console.log("Something went wrong! Oops!");
-	}
+        tweetIt('.@' + screenName + ' thanks for following!')
+    }else{
+    	console.log("Something went wrong! Oops!");
+    }
 	console.log("Followed event triggered!");
 }
