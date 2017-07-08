@@ -6,7 +6,7 @@ var config = require('./config');
 
 var T = new Twit(config);
 
-//getting, searching for a tweets, parsing the T.get process into a params var and a function;
+//getting, searching for a tweets, parsing the T.get process into a params var and a function; this is all using TWIT npm that connects with their API easily.
 
 var params = {
 	q: 'rainbow',
@@ -16,7 +16,7 @@ var params = {
 function gotData(err, data, response) {
 	var tweets = data.statuses;
 	for (var i = 0; i < tweets.length; i++) {
-		console.log(i+ 1 + '. ' + tweets[i].text);
+		console.log(i + 1 + '. ' + tweets[i].text);
 	}
 };
 
@@ -64,9 +64,9 @@ function followed(eventMsg) { //need eventMsg from api doc to get the name of th
 	var name = eventMsg.source.name;
 	var screenName = eventMsg.source.screen_name;
 	if (screenName !== 'dev_meelosh') {
-        tweetIt('.@' + screenName + ' thanks for following!')
-    }else{
-    	console.log("Something went wrong! Oops!");
-    }
+		tweetIt('.@' + screenName + ' thanks for following!')
+	} else {
+		console.log("Something went wrong! Oops!");
+	}
 	console.log("Followed event triggered!");
 }
