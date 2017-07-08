@@ -8,19 +8,19 @@ var T = new Twit(config);
 
 //getting, searching for a tweets, parsing the T.get process into a params var and a function;
 
-var params = {
-	q: 'rainbow',
-	count: 5
-};
+// var params = {
+// 	q: 'rainbow',
+// 	count: 5
+// };
 
-function gotData(err, data, response) {
-	var tweets = data.statuses;
-	for (var i = 0; i < tweets.length; i++) {
-		console.log(i+ 1 + '. ' + tweets[i].text);
-	}
-};
+// function gotData(err, data, response) {
+// 	var tweets = data.statuses;
+// 	for (var i = 0; i < tweets.length; i++) {
+// 		console.log(i + 1 + '. ' + tweets[i].text);
+// 	}
+// };
 
-T.get('search/tweets', params, gotData);
+// T.get('search/tweets', params, gotData);
 
 
 //POSTing a tweet, need to call it via tweetIt() to work, but interval is set below so it will work through that.
@@ -35,7 +35,7 @@ function tweetIt(txt) { //wrapping it up in a function for later use
 
 	function tweeted(err, data, response) {
 		if (err) {
-			console.log('Something went wrong!');
+			console.log(err);
 		} else {
 			console.log('It worked! You also tweeted something! Check it out on Twitter!');
 		}
@@ -64,7 +64,7 @@ function followed(eventMsg) { //need eventMsg from api doc to get the name of th
 	var name = eventMsg.source.name;
 	var screenName = eventMsg.source.screen_name;
 	if (screenName !== 'dev_meelosh') {
-        tweetIt('@' + screenName + ' thanks for following!')
+        tweetIt('@' + screenName + ' thank you, this means a lot to me - I got a new follower yey!');
     }else{
     	console.log("Something went wrong! Oops!");
     }
