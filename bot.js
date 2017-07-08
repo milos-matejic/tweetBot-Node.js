@@ -64,7 +64,7 @@ function followed(eventMsg) { //need eventMsg from api doc to get the name of th
 	var name = eventMsg.source.name;
 	var screenName = eventMsg.source.screen_name;
 	if (screenName !== 'dev_meelosh') {
-        tweetIt('.@' + screenName + ' thanks for following!')
+        tweetIt('@' + screenName + ' thanks for following!')
     }else{
     	console.log("Something went wrong! Oops!");
     }
